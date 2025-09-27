@@ -1,69 +1,58 @@
-# React + TypeScript + Vite
+# 🐱 CatCaffe App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript + TailwindCSS web application for discovering and reserving cat cafés around the world.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ About the App
 
-## Expanding the ESLint configuration
+CatCaffe App is a single-page application where users can:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Search cat cafés by city using **Google Places API**
+- See basic info for each café (name, address, rating, photo)
+- Click on a café to open a dedicated page with:
+  - Google Map embed with the location
+  - Opening hours (with accordion toggle)
+  - Reservation system (date & time) saved to **localStorage**
+  - Photos of the café (or fallback cat images from **The Cat API** if no photos are available)
+- Sort cafés by rating or name
+- Responsive layout with navigation and footer
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [React](https://react.dev/) + [Vite](https://vitejs.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/) for styling
+- [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview) for café data
+- [The Cat API](https://thecatapi.com/) for fallback cat images
+- Local storage for reservations (via a custom `ReservationManager` class)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/elab-development/klijentske-veb-tehnologije-2024-2023-0422-cat-caffee
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Environment variables
+
+Create a .env.local file in the project root with your Google Maps API key:
+
+VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+VITE_CAT_API_KEY=your_cat_api_key
+
+### 4. Run the development server
+
+```bash
+npm run dev
 ```
